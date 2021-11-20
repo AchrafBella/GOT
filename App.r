@@ -39,6 +39,7 @@ ui <- fluidPage(
     ),
     tags$b("GoT Data Visualisation Application", class = "titre")
   ),
+  
 
   navbarPage('GOT visulization',
              
