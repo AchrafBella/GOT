@@ -1,7 +1,7 @@
 @import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
 
 body {
-	background: #CBDFDD;
+  background-color: #92a8d1;
 }
 
 .titre {
@@ -9,7 +9,7 @@ body {
 	font-family: 'Lobster', cursive;
 	font-weight: 500;
 	line-height: 1.1;
-	color: #ad1d28;
+	color: #92a8d1;
 }
 
 header {
@@ -23,10 +23,10 @@ header {
 }
 
 i {
-	color: #ad1d28;
+	color: #92a8d1;
 }
 
 .btn {
-	background: #99453A;
+	background: #92a8d1;
 	color: #fff;
 }

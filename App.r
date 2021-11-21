@@ -1,10 +1,9 @@
 library(shiny)
 library(shinyWidgets)
+library(shinyalert)
 library(dplyr)
 library(sf)
 library(ggplot2)
-library(DT)
-library(ggcorrplot)
 
 source("data_acquisition.R")
 
@@ -34,7 +33,7 @@ ui <- fluidPage(
     ),
     tags$b("GoT Data Visualisation Application", class = "titre")
   ),
-  
+
 
   navbarPage('GOT visulization',
              
@@ -80,7 +79,11 @@ ui <- fluidPage(
                ),
                column(10,  DT::dataTableOutput('rawtable'))
              ) ),
-  )
+  ),
+  
+  tags$br(),
+  tags$br(),
+  actionLink("aPropos", "About")
 )
 
 
@@ -139,6 +142,26 @@ server <- function(input, output){
       guides(colour = "legend", size = "legend")+
       theme_bw()    
     
+  })
+  
+
+    observeEvent(input$aPropos, {
+    shinyalert(
+      title = "About",
+      text = readLines("www/a-propos.html"),
+      size = "s",
+      closeOnEsc = TRUE,
+      closeOnClickOutside = TRUE,
+      html = TRUE,
+      type = "info",
+      showConfirmButton = TRUE,
+      showCancelButton = FALSE,
+      confirmButtonText = "OK",
+      confirmButtonCol = "#AEDEF4",
+      timer = 0,
+      imageUrl = "",
+      animation = TRUE
+    )
   })
   
 }
