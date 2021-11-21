@@ -7,6 +7,11 @@ episodes <- read_csv(file.path('data','episodes.csv'))
 populations <- read_csv(file.path('data','populations.csv'))
 scenes <- read_csv(file.path('data','scenes.csv'))
 
+colforest="#c0d7c2"
+colriver="#7ec9dc"
+colland="ivory"
+borderland = "ivory3"
+
 # geographic data
 locations <- st_read("./data/GoTRelease/Locations.shp",crs=4326)
 lakes <- st_read("./data/GoTRelease/Lakes.shp",crs=4326)

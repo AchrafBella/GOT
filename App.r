@@ -9,11 +9,6 @@ library(ggcorrplot)
 source("data_acquisition.R")
 
 
-colforest="#c0d7c2"
-colriver="#7ec9dc"
-colland="ivory"
-borderland = "ivory3"
-
 datasets = c('appearances', 'characters', 'episodes', 'populations', 'scenes')
 character_name_list = appearances %>% pull(name) %>% unique()
 colors =  c('red', 'blue', 'green')
