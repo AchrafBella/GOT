@@ -8,10 +8,24 @@ library(ggplot2)
 character_name_list = appearances %>% pull(name) %>% unique()
 
 
-
 ui <- dashboardPage(
-  dashboardHeader(title="Game of Thrones Analysis"),
-  dashboardSidebar(),
+  dashboardHeader(title="Game of Thrones data Analysis"),
+  
+  dashboardSidebar(
+    br(),
+    selectInput("saison", "Choose a season", 
+                choices = c(1, 2, 3, 4, 5, 6, 7, 8),),
+  selectInput("episode", "Choose an Episode",
+              choices = c(1,2,3,4,5),),
+  radioButtons("ds", "See the place of :",
+    choices = c("Scenes", "Death people")),
+  selectInput("names", "Choose character name:",character_name_list),
+  
+  selectInput(inputId="df",label="Select datasets",
+              choices =  c('appearances', 'characters', 'episodes', 
+                           'populations', 'scenes'))
+  ),
+  
   dashboardBody(
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),
@@ -28,50 +42,20 @@ ui <- dashboardPage(
 
     navbarPage('Game of thrones visulization',
                tabPanel("Got map",
-                        sidebarLayout(
-                          sidebarPanel(
-                            selectInput("saison", "Choose a season",
-                                        choices = c(1, 2, 3, 4, 5, 6, 7, 8),
-                            ),
-                            selectInput("episode", "Choose an Episode",
-                                        choices = c(1,2,3,4,5),
-                            ),
-                            radioButtons(
-                              "ds",
-                              "See the place of :",
-                              choices = c("Scenes", "Death people")
-                            ),
-                          ),
-                          
-                          # Show a plot of the generated distribution
-                          mainPanel(
-                            plotOutput("distPlot")
-                          )
-                        )
-               ),
+                        h2("title to be added"),
+                        plotOutput("distPlot", width = "100%")),
                
-               tabPanel("Time series data", sidebarPanel(
-                 selectInput("names", "Choose character name:",character_name_list)),
-                 mainPanel(
-                   h2("Line graph of time spend per episode by a character",
-                      style='background-color:coral;padding-left: 15px'),
-                   plotOutput(outputId="g", width="100%"),)),
+               tabPanel("Time series data",
+                        plotOutput(outputId="g", width="100%")),
                
+               tabPanel("Data", 
+                        DT::dataTableOutput('rawtable')),
                
-               tabPanel("Data", fluidRow(
-                 column(2,
-                        selectInput(inputId="df",label="Select datasets",
-                                    choices =  c('appearances', 'characters', 'episodes', 
-                                                 'populations', 'scenes')),
-                 ),
-                 column(10,  DT::dataTableOutput('rawtable'))
-               ) ),
+               tabPanel("About", includeHTML("www/a-propos.html"), br()),
                
-               tabPanel("About", includeHTML("www/a-propos.html"),br()),
-               tabPanel("Developers", includeHTML("www/Developers.html"),br()),
-    )            
-    
-  )   
+               tabPanel("Developers", includeHTML("www/Developers.html"), br()),
+    )
+  )
 )
 
 
