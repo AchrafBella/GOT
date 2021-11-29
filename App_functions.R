@@ -40,7 +40,7 @@ function1 <- function(season){
                                       label=paste(round(screenTimeTotal/60),'min')),hjust = "left")+
     scale_x_continuous("Temps d'apparition (min)",
                        breaks = seq(0,750,by=120),limits = c(0,780),expand = c(0,1))+
-    ylab("")+ggtitle("Temps d'apparition cumulé par personnage et saison")
+    ylab("")+ggtitle("The time of appearance for the main characters per season")
 }
 
 
@@ -54,7 +54,7 @@ function2 <- function(season){
     scale_x_discrete("N° épisode",as.character(seq(1,73, by=5)))+
     scale_fill_brewer(palette="Spectral",guide="none")+
     ylab("Durée des scènes (min)")+
-    ggtitle("Répartition des durées des scènes par épisodes")+
+    ggtitle("Dispatching of duration pear season and episode ")+
     theme_bw()
   
 }
@@ -73,7 +73,7 @@ function3 <- function(season){
     scale_y_continuous("Durée de la scène la plus longue",limits = c(100,300))+
     scale_color_brewer("Saison",palette ="Spectral")+
     guides(colour = "legend", size = "legend")+
-    ggtitle("informations sur les saisons et le nombre de morts ")+
+    ggtitle("Information about the season and the number of deaths")+
     theme_bw()
 }
 

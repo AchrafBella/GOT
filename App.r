@@ -26,21 +26,16 @@ ui <- dashboardPage(
     radioButtons("ds", "See the place of :",
                  choices = c("Scenes", "Death people")),
     actionButton("btn1", "Afficher"),
-  
   selectInput("names", "Choose character name:",character_name_list),
-
   selectInput(inputId="df",label="Select datasets",
               choices =  c('appearances', 'characters', 'episodes', 
-                           'populations', 'scenes'))
-  ),
+                           'populations', 'scenes'))),
   
   dashboardBody(
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),
     tags$header(
-      tags$img(
-        src = "ecc.png",
-        title = "Ecole Centrale Casablanca",
+      tags$img(src = "ecc.png", title = "Ecole Centrale Casablanca",
         width = "70",
         height = "45",
         class = "logo"
@@ -48,6 +43,7 @@ ui <- dashboardPage(
       tags$b("GoT Data Visualisation Application", class = "titre")
     ),
 
+    
     navbarPage('Game of thrones visulization',
                tabPanel("Got map",
                         h2("title to be added"),
