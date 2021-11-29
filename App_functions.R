@@ -2,20 +2,6 @@ main_char= c("Jon Snow", "Tyrion Lannister","Daenerys Targaryen",
              "Sansa Stark","Cersei Lannister","Arya Stark")
 
 
-get_time_spent_per_character <- function(char_name){
-  
-  jstime = appearances %>% filter(name==char_name) %>% 
-    left_join(scenes) %>% 
-    group_by(episodeId) %>% 
-    summarise(time=sum(duration))
-  
-  ggplot(jstime) + 
-    geom_line(aes(x=episodeId,y=time), color = "blue", size = 1)+
-    theme_bw()
-  
-}
-
-
 function1 <- function(season){
   
   screenTimePerSeasons = appearances %>% left_join(scenes) %>% 
@@ -73,7 +59,7 @@ function3 <- function(season){
   ggplot(scenes_stats,aes(x=nb_scenes,y=duration_max,col=factor(seasonNum)))+
     geom_point(aes(size=nbdeath))+
     geom_text(data=labels,aes(label=episodeTitle),vjust=-0.6)+
-    scale_x_continuous("Nombre de scÃ¨ne",limits = c(0,280))+
+    scale_x_continuous("Nombre of scene",limits = c(0,280))+
     scale_y_continuous("Time of the longest scences",limits = c(100,300))+
     scale_color_brewer("Saison",palette ="Spectral")+
     guides(colour = "legend", size = "legend")+
@@ -81,13 +67,15 @@ function3 <- function(season){
     theme_bw()
 }
 
-got_map <- function(){
-  borderland = "ivory3"  
-  ggplot(allDatas)+
-    + geom_sf(aes(fill = type), size = 0.1) +
-    geom_sf(data = locations,fill = "black",color = "black") +
-    scale_fill_manual("Lands category", values = cols) +
-    theme_minimal()+coord_sf(expand = 0,ndiscr = 0)+
-    theme(panel.background = element_rect(fill = colriver,color=NA)) +
-    labs(title = "GoT",caption = "Etiennne Côme, 2020",x="",y="")
+
+function4 <- function(char_name){
+  
+  jstime = appearances %>% filter(name==char_name) %>% 
+    left_join(scenes) %>% 
+    group_by(episodeId) %>% 
+    summarise(time=sum(duration))
+  
+  ggplot(jstime) + 
+    geom_line(aes(x=episodeId,y=time), color = "blue", size = 1)+
+    theme_bw()
 }

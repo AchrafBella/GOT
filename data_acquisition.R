@@ -1,6 +1,4 @@
-library(readr)
 
-# Load data
 appearances <- read_csv(file.path('data','appearances.csv'))
 characters <- read_csv(file.path('data','characters.csv'))
 episodes <- read_csv(file.path('data','episodes.csv'))
