@@ -1,11 +1,15 @@
 library(shiny)
 library(shinydashboard)
 library(readr)
-library(dplyr)
 library(sf)
+library(dplyr)
 library(ggplot2)
+library(roxygen2)
+library(ggiraph)
 
-character_name_list = appearances %>% pull(name) %>% unique()
+
+source("App_functions.R")
+source("data_acquisition.R")
 
 
 ui <- dashboardPage(
@@ -19,8 +23,10 @@ ui <- dashboardPage(
               choices = c(1,2,3,4,5),),
   radioButtons("ds", "See the place of :",
     choices = c("Scenes", "Death people")),
-  selectInput("names", "Choose character name:",character_name_list),
+  actionButton("btn1", "Afficher"),
   
+  selectInput("names", "Choose character name:",character_name_list),
+
   selectInput(inputId="df",label="Select datasets",
               choices =  c('appearances', 'characters', 'episodes', 
                            'populations', 'scenes'))
@@ -43,9 +49,10 @@ ui <- dashboardPage(
     navbarPage('Game of thrones visulization',
                tabPanel("Got map",
                         h2("title to be added"),
-                        plotOutput("distPlot", width = "100%")),
+                        plotOutput("displayMap", width = "100%")),
                
                tabPanel("Time series data",
+                        h2("title to be added"),
                         plotOutput(outputId="g", width="100%")),
                
                tabPanel("Data", 
@@ -61,21 +68,14 @@ ui <- dashboardPage(
 
 server <- function(input, output){
   
+  output$displayMap <- renderPlot({
+    got_map()
+  })
+
+  output$g <- renderPlot({ get_time_spent_per_character(input$names) })
+  
   output$rawtable <- DT::renderDataTable(read_csv(
     file.path('data',paste(input$df,'.csv', sep=''))))
-  
-  output$g <- renderPlot({
-    
-    jstime = appearances %>% filter(name==input$names) %>% 
-      left_join(scenes) %>% 
-      group_by(episodeId) %>% 
-      summarise(time=sum(duration))
-    
-    ggplot(jstime) + 
-      geom_line(aes(x=episodeId,y=time), color = "blue", size = 1)+
-      theme_bw()
-   
-  })
   
 }
 
