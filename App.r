@@ -43,7 +43,6 @@ ui <- dashboardPage(
       tags$b("GoT Data Visualisation Application", class = "titre")
     ),
 
-    
     navbarPage('Game of thrones visulization',
                tabPanel("Got map",
                         h2("title to be added"),
@@ -67,7 +66,6 @@ ui <- dashboardPage(
 
 
 server <- function(input, output){
-  
   output$displayMap <- renderPlot({})
 
   output$g1 <- renderPlot({ function1(input$seasonC) })
@@ -76,7 +74,6 @@ server <- function(input, output){
   
   output$rawtable <- DT::renderDataTable(read_csv(
     file.path('data',paste(input$df,'.csv', sep=''))))
-  
 }
 
 
