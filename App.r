@@ -5,12 +5,12 @@ library(dplyr)
 library(ggplot2)
 library(sf)
 
-
-
 source("App_functions.R")
 source("data_acquisition.R")
 
 character_name_list <- appearances %>% pull(name) %>% unique()
+main_char= c("Jon Snow", "Tyrion Lannister","Daenerys Targaryen",
+             "Sansa Stark","Cersei Lannister","Arya Stark")
 
 ui <- dashboardPage(
   dashboardHeader(title="Game of Thrones data Analysis"),
@@ -21,6 +21,7 @@ ui <- dashboardPage(
                        choices = c(1,2,3,4,5,6,7,8) ,
                        selected = c(1,2,3,4,5,6,7,8)),
     selectInput("char_names", "Choose character name:",character_name_list),
+    selectInput("main_char", "Choose character name for the map:",main_char),
     selectInput(inputId="df",label="Select datasets",
               choices =  c('appearances', 'characters', 'episodes', 
                            'populations', 'scenes'))),
@@ -39,8 +40,8 @@ ui <- dashboardPage(
 
     navbarPage('Game of thrones visulization',
                tabPanel("Got map",
-                        h2("title to be added"),
-                        plotOutput("displayMap", width = "100%")),
+                        h2("The presence of character in GOT univers"),
+                        plotOutput("map", width = "100%")),
                tabPanel("Analysis",
                         h2("Statistics on GOT data"),
                         plotOutput(outputId="g1", width="100%"),
@@ -56,6 +57,7 @@ ui <- dashboardPage(
 
 server <- function(input, output){
   
+  output$map <- renderPlot({ function5(input$main_char)})
   output$g1 <- renderPlot({ function4(input$char_names)})
   output$g2 <- renderPlot({ function1(input$seasonC) })
   output$g3 <- renderPlot({ function2(input$seasonC) })

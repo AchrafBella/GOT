@@ -79,3 +79,27 @@ function4 <- function(char_name){
     geom_line(aes(x=episodeId,y=time), color = "blue", size = 1)+
     theme_bw()
 }
+
+function5 <- function(char_name){
+  scenes_locations=st_read("./data/GoTRelease/ScenesLocations.shp",crs=4326)
+  
+  landpol = st_union(st_geometry(land)) 
+  islandpol = st_union(st_geometry(islands))
+  backpol=st_union(landpol,islandpol)
+  background = st_as_sf(data.frame(name=main_char,geometry=rep(backpol,6)))
+  
+  loc_time=appearances %>% filter(name == char_name) %>% left_join(scenes) %>% group_by(location,name) %>% summarize(duration=sum(duration,na.rm=TRUE)) 
+  loc_time_mc = scenes_locations %>% left_join(loc_time)
+  
+  ggplot()+geom_sf(data=background,color=borderland,fill=colland)+
+    geom_sf(data=loc_time_mc%>% filter(!is.na(duration)),aes(size=duration/60,color=name))+
+    geom_sf_text(data=loc_time_mc%>% filter(duration>60*60),aes(label=location),
+                 color="#000000",vjust="bottom",family="Palatino", fontface="italic")+
+    coord_sf(expand = 0,ndiscr = 0)+
+    scale_color_discrete(guide="none")+
+    scale_size_area("Durée (min) :",max_size = 12,breaks=c(30,60,120,240))+
+    labs(title = "Temps de présence des personnage principaux",
+         caption = "@ecc, 2021",x="",y="")
+ 
+}
+
