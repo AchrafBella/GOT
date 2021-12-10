@@ -53,3 +53,27 @@ Le RDF est le suivant :
 
 ## Requête 2 :
 ------------------
+On se qui concerne la deuxieme requete on aimerais savoir les lauréats qui sont eu plusieurs prix noble.
+Pour cela nous avons utiliser la requete suivante :
+
+```SPARQL
+PREFIX nobel: <http://data.nobelprize.org/terms/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+SELECT DISTINCT ?Nom (count(?prize_date) as ?nbr)
+WHERE { 
+  ?url rdfs:label ?Nom . 
+  ?url nobel:laureateAward ?award . 
+  ?award nobel:year ?prize_date.
+}Group By ?Nom 
+ORDER BY DESC(?nbr)
+```
+
+
+
+
+
+
+
+
