@@ -4,7 +4,8 @@
 Sujet : Nobel prizes
 -----------
 
-Durant ce TP nous allons intéroger la base de données des Nobel prizes utilisant SPARQL et pour cela nous allons utlisé le point d'acces suivant : https://data.nobelprize.org/sparql 
+Durant ce TP nous allons interroger la base de données des Nobel prises utilisant SPARQL et pour cela nous allons utiliser le point d'accès suivant : 
+https://data.nobelprize.org/sparql
 
 Avant de faire toute requete il faut intéroger la base de données pour savoir les triplets pour cela nous avons utlisé le code suivant : 
 
@@ -20,9 +21,8 @@ Where{
 
 ## Requête 1 :
 ------------------
-Pour la première requete en s'interesse de savoir les lauréats qu'ont restent active dans la recherche durant la pèriode de COVID (2019-2021) et plus précisement les femmes.
-Pour répondre à cette question nous avons utilisé la requete suivante : 
-
+Pour la première requête en s'interesse de savoir les lauréats qu'on reste active dans le domaine de la recherche durant la période de COVID (2019-2021) et plus précisément les femmes.
+Pour répondre à cette question nous avons utilisé la requête suivante :
 
 ```SPARQL
 PREFIX nobel: <http://data.nobelprize.org/terms/>
@@ -43,11 +43,13 @@ WHERE{
 }
 ```
 
-Les résultats sont affichie ci-dessus : 
+Les résultats sont affichées ci-dessus : 
 
 ![requete1](https://user-images.githubusercontent.com/52492864/145575887-9d9ec916-ee3d-4091-8faf-1a9f17d71bb7.PNG)
 
 Le RDF est le suivant : 
+
+![requete1 rdf](https://user-images.githubusercontent.com/52492864/145578081-524d0f2c-ab53-40cf-9a10-ed406261a37e.PNG)
 
 ## Requête 2 :
 ------------------
