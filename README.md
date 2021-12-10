@@ -69,11 +69,10 @@ WHERE {
 }Group By ?Nom 
 ORDER BY DESC(?nbr)
 ```
+Les résultats sont affichées ci-dessus :
 
+![requete2](https://user-images.githubusercontent.com/52492864/145584111-9e7ba51a-ad38-4cea-b515-3fd1b6f82944.PNG)
 
+Le RDF est le suivant : 
 
-
-
-
-
-
+![requete2 rdf](https://user-images.githubusercontent.com/52492864/145584574-6c02b0bb-3fe1-4c74-b9dc-99265c4faefb.PNG)
