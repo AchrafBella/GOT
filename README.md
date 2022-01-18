@@ -2,8 +2,9 @@
 -------------------------------------
 
  
-Requirements : Avant de commencer notre TP, il faut assurer l'instalation suivante vu que on va utiliser **mrjob** et **collections** et plus précisément counter.   
+Requirements :  
 -----------
+Avant de commencer notre TP, il faut assurer l'instalation suivante vu que on va utiliser mrjob et collections et plus précisément counter.  
 ```python
 pip install collections
 pip install mrjob
