@@ -31,12 +31,39 @@ cat .\minipurchases.txt | python .\Q1_PurchasesByCategory.py
 Partie I : Angramme avec map-reduce
 -----------
 
+Pour répondre à cette question j'ai écris une fonction mapper: qui renvoie une liste des caracters trier de mot et le mot meme, le but c'est de regrouper les mots similaires. Et un reducer qui reconstitue les mots. 
 
+![image](https://user-images.githubusercontent.com/52492864/149981165-784a18fa-3545-48d7-983f-e592b96fa0c8.png)
 
+J'ai stocké les résultat dans un fichier all_angrammes.txt 
 
+Exemple pour lancer la requête: 
+-----------
+```python
+cat .\words_alpha.txt | python .\anagramme.py > .\all_angrammes.txt
+ ```
 
 Partie II : Requête originale et complexe avec map-reduce
 -----------
  
+Le but de cette requete est de permettre aux décideurs de voir l'argent générer chaque mois ainsi que de savoir le pourcentage de chaque moyenne de paiement. 
+
+
+
+![data](https://user-images.githubusercontent.com/52492864/149981942-22370f4c-9d3b-4ebe-a9ca-6b21b06d30ca.PNG)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
