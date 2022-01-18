@@ -10,46 +10,33 @@ pip install collections
 pip install mrjob
 ```
 
-Partie I
+Partie I : 5 Questions sur les ventes
 -----------
  - Dataset
  
+On ce qui concerne la base de données nous avons des données sur les vents avec 6 variables (features).
  
-On ce qui concerne la base de données nous avons des vents avec 6 variables (features) qui sont :
+L'information la plus importante ce qu'il y a des données manquantes comme la figure montre, il faut les gérer, pour cela nous avons utilisé gestion des exceptions (Try-catch) pour gérer cette erreur.
  
-date (format YYYY-MM-DD);
+![image](https://user-images.githubusercontent.com/52492864/149978705-7297f02b-885f-454b-8817-d4d8b459cfee.png)
 
+J'ai pris une subset de données que j'ai appelé minipurchases.txt. 
 
-heure (format hh:mm);
-
-
-ville d’achat;
-
-
-catégorie de l’achat (parmi Book, Men’s Clothing, DVDs…);
-
-
-somme dépensée par le client;
-
-
-moyen de paiement (parmi Amex, Cash, MasterCard…).
- 
- 
- L'information la plus importante ce qu'il y a des données manquantes comme la figure montre, il faut les gérer, pour cela nous avons utilisé gestion des exceptions (Try-catch) pour gérer cette erreur.
- 
- 
-
-Partie II
------------
- 
-
-
-Exemple to run: 
+Exemple pour lancer la requête: 
 -----------
 ```python
-gent1 = HeuristicAgent('hur agent 1', 1)
-agent1_ = AgentLeftMost('leftmost agent 2', 2)
-env = Env(agents={'agent1': agent1, 'agent2': agent1_})
-env.run(rounds=500)
-```
+cat .\minipurchases.txt | python .\Q1_PurchasesByCategory.py
+ ```
  
+Partie I : Angramme avec map-reduce
+-----------
+
+
+
+
+
+Partie II : Requête originale et complexe avec map-reduce
+-----------
+ 
+
+
