@@ -10,15 +10,20 @@ pip install collections
 pip install mrjob
 ```
 
-Motivation
------------
-
-
-
-
-
 Partie I
 -----------
+ - Dataset
+ On ce qui concerne la base de données nous avons des vents avec 6 variables (features) qui sont :
+ 
+date (format YYYY-MM-DD);
+heure (format hh:mm);
+ville d’achat;
+catégorie de l’achat (parmi Book, Men’s Clothing, DVDs…);
+somme dépensée par le client;
+moyen de paiement (parmi Amex, Cash, MasterCard…).
+ 
+L'information la plus importante ce que il y a des données manquante comme la figure montre qu'il faut gérer, nous avons utiliser gestion des exception (try-catch) pour gérer cette erreur.
+ 
  
 
 Partie II
